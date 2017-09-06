@@ -34,7 +34,7 @@ public class App
             help();
         }else{
             help();
-            LOG.log(Level.SEVERE,"Illeagal argument passed " + args[0]);
+            LOG.log(Level.SEVERE,"Illegal argument passed " + args[0]);
             throw new IllegalArgumentException("Invalid argument exception " + args[0] );
         }
 
