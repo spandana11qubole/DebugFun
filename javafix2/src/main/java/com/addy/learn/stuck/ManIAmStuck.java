@@ -28,12 +28,9 @@ public class ManIAmStuck implements  Scenario {
 
     public void runScenario() throws Exception {
         Thread t1 = new Thread(new FactCalc());
-        t1.run();
-        try {
-            t1.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        t1.setDaemon(true);
+        t1.start();
+
     }
 
 }
