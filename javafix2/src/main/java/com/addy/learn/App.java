@@ -21,7 +21,7 @@ public class App {
 
             if(inputString.equalsIgnoreCase("ls")){
                 System.out.println("Stuck, Hogger");
-            }else if(inputString.matches("/Stuck/i")) {
+            }else if(inputString.matches("Stuck")) {
                 try{
                     ManIAmStuck m = new ManIAmStuck();
                     ManIAmStuck.FactCalc.factLimit = 100;
