@@ -8,7 +8,7 @@ import com.addy.learn.utils.Scenario;
 import java.util.Scanner;
 
 /**
- * CLI environment for scenario execution
+ * CLI environment for scenario execution and trying out new stuff
  *
  */
 public class App {
