@@ -9,6 +9,7 @@ public class Chaos {
     private Thread incrementThread;
     private Thread decrementThread;
     private Thread showThread;
+    private Thread showThreadStates;
 
     public Chaos(){
         c = 0;
@@ -16,12 +17,7 @@ public class Chaos {
             @Override
             public void run(){
                 while(true){
-                    try {
-                        increment();
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        System.out.println("increment thread interrupted");
-                    }
+                    increment();
                 }
             }
         };
@@ -30,12 +26,7 @@ public class Chaos {
             @Override
             public void run(){
                 while(true){
-                    try {
-                        decrement();
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        System.out.println("increment thread interrupted");
-                    }
+                    decrement();
                 }
             }
         };
@@ -44,12 +35,16 @@ public class Chaos {
             @Override
             public void run () {
                 while(true){
-                    try {
-                        showC();
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        System.out.println("increment thread interrupted");
-                    }
+                    showC();
+                }
+            }
+        };
+
+        showThreadStates = new Thread() {
+            @Override
+            public void run(){
+                while(true){
+                    showThreadStatesThread();
                 }
             }
         };
@@ -66,18 +61,19 @@ public class Chaos {
         c++;
     }
 
-    public void decrement(){
+    public  void decrement(){
         c--;
     }
 
-    public void showC(){
-        System.out.println("Value of the field c is " + Integer.toString(c));
+    public  void showC(){
+        System.out.println("Value of C = " + Integer.toString(c));
     }
 
-    public void startThreads(){
+    public  void startThreads(){
         incrementThread.start();
         decrementThread.start();
         showThread.start();
+        showThreadStates.start();
 
     }
 
@@ -95,7 +91,15 @@ public class Chaos {
         incrementThread.interrupt();
         decrementThread.interrupt();
         showThread.interrupt();
+        showThreadStates.interrupt();
     }
+
+    public void showThreadStatesThread(){
+        System.out.println("Increment Thread is " + incrementThread.getState().toString());
+        System.out.println("Decrement Thread is " + decrementThread.getState().toString());
+        System.out.println("Show Thread is " + showThread.getState().toString());
+    }
+
 
     public static void main( String[] args ) {
 
