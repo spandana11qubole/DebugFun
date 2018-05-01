@@ -70,7 +70,7 @@ public class AnagramBuilder {
             }
         }
 
-        Set<Character> allChars = new HashSet<>(charSet1);
+        Set<Character> allChars = charSet1;
         allChars.addAll(charSet2);
         for(Character c : allChars){
             if(charSet1.contains(c) && charSet2.contains(c)){
